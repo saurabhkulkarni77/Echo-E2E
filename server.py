@@ -35,12 +35,12 @@ if __name__ == '__main__':
 	model2 = load_model('model/first_model.h5')
 	
 	print('------------------------------------------------Temp--------------------------------------------')
-	review = 'Best Survey'
-	review = np.array([review])
-	review = np.char.lower(review)
+	survey_input = 'Best Survey'
+	survey_input = np.array([survey_input])
+	survey_input = np.char.lower(survey_input)
 	remove_unwanted_characters = lambda x: re.sub('[^a-zA-Z0-9\s]','',x)
 	func = np.vectorize(remove_unwanted_characters)
-	abcd = func(review)
+	abcd = func(survey_input)
 	op = tokenizer.texts_to_sequences(abcd)
 	X_new = pad_sequences(op, maxlen = 50)
 	ynew = model.predict(X_new)
