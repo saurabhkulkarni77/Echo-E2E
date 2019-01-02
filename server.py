@@ -35,7 +35,7 @@ if __name__ == '__main__':
 	model2 = load_model('model/first_model.h5')
 	
 	print('------------------------------------------------Temp--------------------------------------------')
-	review = 'ok movie'
+	review = 'Best Survey'
 	review = np.array([review])
 	review = np.char.lower(review)
 	remove_unwanted_characters = lambda x: re.sub('[^a-zA-Z0-9\s]','',x)
@@ -43,8 +43,8 @@ if __name__ == '__main__':
 	abcd = func(review)
 	op = tokenizer.texts_to_sequences(abcd)
 	X_new = pad_sequences(op, maxlen = 50)
-	ynew = model.predict_classes(X_new)
-	#print(ynew[0])
+	ynew = model.predict(X_new)
+	print(ynew[0])
 	#filehandler.close()
 	print('------------------------------------------------Temp--------------------------------------------')
 	
