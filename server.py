@@ -17,7 +17,7 @@ def welcome_here():
 @app.route('/result', methods = ['POST','GET'])
 def giveResult():
 	if request.method == 'POST':
-		review = request.form['review']
+		review = request.form['survey_input']
 		predicted_class = ml.predict(review, model, tokenizer)
 		result = jsonify({'class' : predicted_class}), 200
 	else:
